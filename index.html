@@ -2181,22 +2181,18 @@
     </div>
 <script>
 function includeHTML(id, file) {
-    fetch(file)
-        .then(res => {
-            if (!res.ok) throw new Error("Network response was not ok");
-            return res.text();
-        })
-        .then(data => {
-            document.getElementById(id).innerHTML = data;
-        })
-        .catch(err => console.error("Error loading include:", err));
+  fetch(file)
+    .then(res => res.text())
+    .then(html => document.getElementById(id).innerHTML = html)
+    .catch(err => console.error(err));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    includeHTML("header-include", "header.html");
-    includeHTML("footer-include", "footer.html");
+  includeHTML("header-include", "header.html");
+  includeHTML("footer-include", "footer.html");
 });
 </script>
+
 
 
     <script type="speculationrules">
